@@ -1,0 +1,37 @@
+[project]
+name = "m-docs"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastmcp>=2.13.0",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.2",
+]
+
+[tool.ruff]
+# Target Python 3.13+
+target-version = "py313"
+# Exclude paths
+exclude = [
+    ".git",
+    "__pycache__",
+    "*.egg-info",
+    ".venv",
+]
+
+[tool.ruff.lint]
+# Enable common rules
+select = ["E", "F", "W", "B", "C90", "I", "UP", "PL"]
+# Ignore specific rules - complexity warnings for now since they require refactoring
+# ignore = ["E501", "C901", "PLR0912", "PLR0915", "PLR2004", "PLC0415", "B007"]
+
+[tool.ruff.format]
+# Use double quotes for strings
+quote-style = "double"
+# Keep trailing commas
+skip-magic-trailing-comma = false
