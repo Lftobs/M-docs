@@ -32,13 +32,13 @@ A Python-based MCP tool that converts structured Markdown files containing layer
 **Requires:** comma,separated,variables (optional)
 **Save Response Variable:** variable_name (optional)
 
-  ```curl
-  curl -X POST https://api.example.com/endpoint \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer {{auth_token}}" \
-    -d '{"key": "value"}'
-  ```
-Another request...
+ > ```curl
+>  curl -X POST https://api.example.com/endpoint \
+>    -H "Content-Type: application/json" \
+>    -H "Authorization: Bearer {{auth_token}}" \
+>    -d '{"key": "value"}'
+>  ```
+```
 
 
 ### Supported Metadata Fields
@@ -107,7 +107,7 @@ or you can set it up as a remote server without needing to clone the repo.
   "mcpServers": {
     "m-docs": {
 
-      "url": "http://127.0.0.1:8000/mcp", // no deployed url yet tho .... ill update as soon as i host 
+      "url": "https://m-docs.fastmcp.app/mcp",
       "headers": {
         "Accept": "application/json, text/event-stream"
       }
@@ -167,7 +167,6 @@ This will launch the server exposing the following MCP tools:
 
 ## 📚 Features
 
-### ✅ Implemented Features
 - [x] Metadata extraction (`**Field:**` format)
 - [x] Markdown parsing with H1/H2 structure
 - [x] cURL command parsing (headers, methods, body, query params)
@@ -179,9 +178,9 @@ This will launch the server exposing the following MCP tools:
 - [x] CLI tool with validation mode
 - [x] Error handling and validation
 - [x] JSON body formatting and syntax highlighting
-- [] Allow dynamic markdown file generation
-- [] Direct publishing to postman
-- [] Allow for execution of requests within the markdown file
+- [ ] Allow dynamic markdown file generation
+- [ ] Direct publishing to postman
+- [ ] Allow for execution of requests within the markdown file
 
 ### 🔄 Variable Flow
 1. **Detection**: `{{variable_name}}` patterns found in cURL commands
@@ -189,12 +188,6 @@ This will launch the server exposing the following MCP tools:
 3. **Pre-request Scripts**: Validate required variables exist
 4. **Test Scripts**: Save response data to specified variables
 5. **Usage**: Variables available in subsequent requests
-
-### 🎯 MCP Integration
-The tool is designed as an MCP (Model Context Protocol) tool with functions:
-- `convert_markdown_to_postman()` - Convert markdown content
-- `convert_file_to_postman()` - Convert markdown file
-- `validate_markdown()` - Validate structure
 
 ## 📄 Output Format
 
