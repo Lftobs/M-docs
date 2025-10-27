@@ -1,4 +1,4 @@
-# Markdown to Postman Collection Converter
+# M-docs
 
 A Python-based MCP tool that converts structured Markdown files containing layered cURL requests into Postman Collection JSON (schema v2.1).
 
@@ -39,6 +39,8 @@ A Python-based MCP tool that converts structured Markdown files containing layer
 >    -d '{"key": "value"}'
 >  ```
 ```
+> [!NOTE]
+> To avoid the markdown fenced code block breaking, we've escaped all inner code blocks with a >.
 
 
 ### Supported Metadata Fields

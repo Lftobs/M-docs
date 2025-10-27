@@ -5,8 +5,10 @@ MCP Server for Markdown to Postman Collection converter.
 import os
 from typing import Any
 
+import aiofiles
 from fastmcp import FastMCP
 
+from md_to_postman.helpers import PROMPT
 from md_to_postman.markdown_parser import MarkdownParser
 from md_to_postman.postman_builder import PostmanCollectionBuilder
 
@@ -14,6 +16,47 @@ mcp = FastMCP("M-docs")
 
 parser = MarkdownParser()
 builder = PostmanCollectionBuilder()
+
+
+@mcp.resource("file:///examples/example.md", mime_type="text/markdown")
+async def m_docs_markdown_example():
+    """
+    Read M-docs example markdown file content for more
+    context of syntax usage while trying to generate md file via llm
+    """
+    try:
+        async with aiofiles.open("examples/example.md") as f:
+            content = await f.read()
+        return content
+    except FileNotFoundError:
+        return "Example file not found."
+
+
+@mcp.resource("file:///examples/syntax.md", mime_type="text/markdown")
+async def m_docs_markdown_syntax_guide():
+    """
+    Read M-docs syntax markdown file content for more
+    context of syntax usage while trying to generate md file via llm
+    """
+    try:
+        async with aiofiles.open("examples/syntax.md") as f:
+            content = await f.read()
+        return content
+    except FileNotFoundError:
+        return "Syntax file not found."
+
+
+@mcp.prompt
+async def create_mardown():
+    """
+    Returns the system prompt string used to instruct the LLM for generating
+    M-docs compliant Markdown files.
+    This prompt includes strict formatting rules and metadata requirements for
+    Markdown->Postman conversion.
+    """
+    # TOBO: Improve this to be more rich and less vague (this isnt enough but
+    # fn cook with this :))
+    return PROMPT
 
 
 @mcp.tool

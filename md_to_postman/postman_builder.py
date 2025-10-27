@@ -296,7 +296,14 @@ class PostmanCollectionBuilder:
         return [
             "// Save response data to variable",
             "const responseJson = pm.response.json();",
-            f"pm.environment.set('{variable_name}', responseJson.token || responseJson.access_token || responseJson.id || JSON.stringify(responseJson));",
+            (
+                f"pm.environment.set('{variable_name}', "
+                "responseJson.token || "
+                "responseJson.access_token || "
+                "responseJson.id || "
+                "JSON.stringify(responseJson)"
+                ");"
+            ),
         ]
 
     def _generate_prereq_script(self, required_vars: str) -> list[str]:

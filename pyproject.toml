@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "aiofiles>=25.1.0",
     "fastmcp>=2.13.0",
 ]
 
@@ -23,6 +24,7 @@ exclude = [
     "*.egg-info",
     ".venv",
 ]
+line-length = 88
 
 [tool.ruff.lint]
 # Enable common rules

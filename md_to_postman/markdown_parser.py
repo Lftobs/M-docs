@@ -49,7 +49,8 @@ class MarkdownParser:
                 i += 1
                 continue
 
-            # Check for request name H2 ( which is mapped as the request item with a folder (which is mapped as H1)
+            # Check for request name H2 ( which is mapped as the request item
+            # with a folder (which is mapped as H1)
             if line.startswith("## "):
                 request_name = line[3:].strip()
                 metadata, curl_command, next_i = self._parse_request_block(lines, i + 1)
